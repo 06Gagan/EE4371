@@ -1,0 +1,1262 @@
+
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "c54748f6-5f63-4240-a0ac-398c793a20e5",
+   "metadata": {},
+   "source": [
+    "# Tut-1 Solutions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f2b67366-55d0-40bc-b84d-54ebdb8a2d84",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "## Q1-Q9 (Goodrich)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b2273386-fcd2-4d72-802b-506a0b0bbd67",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q1. Odd-Even Algorithm (3.31) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c4cfec1b-b1b8-41a3-a614-648b64384398",
+   "metadata": {},
+   "source": [
+    "##### Worst Case : \n",
+    "\n",
+    "##### This is achieved when all the numbers are even. There are $O(N)$ numbers and for each it will take $O(N)$ time, thus leading to a overall complexity of $O(N^2)$.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a463fef9-ba82-48c1-9483-9a0f7c258fb4",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### Best Case :\n",
+    "\n",
+    "##### This is achieved when all the numbers are odd. There are $O(N)$ numbers and for each it will take $O(N)$ time, thus leading to a overall complexity of $O(NlogN)$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a7a19536-d51b-4659-87f0-e370614f5b42",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q2. Complexity Quarrel (3.33)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "af5e256e-9d42-478b-a341-67aeee5211e7",
+   "metadata": {},
+   "source": [
+    "##### By definition, $f(N) = O(g(N))$ means that $f(N) <= c * g(N)$ for all N >= $N_0$ , for some positive constants c, $N_0$ .\n",
+    "\n",
+    "##### Thus here, even though Bill's $O(N^2)$ algorithm upperbounds Al's $O(NlogN)$ algorithm asymptotically, the inequality only needs to hold for all N greater than or equal to some $N_0$. \n",
+    "\n",
+    "##### In this case $N_0$ = 100\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "13e54bad-2bd5-4804-8f7c-3207a210a5ca",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q3. Max & Min (3.41) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "eb585ef2-dbab-47a9-8f1e-62826217cae3",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### Step-1 : Pair up all the items and compare them, producing a set of candidate minima and maxima.\n",
+    "\n",
+    "##### Step-2 : Now with $n/2 - 1$ comparisons each, we can find the minimum of the minima and the maximum of the maxima. The total number of comparisons is $3n/2 - 2$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "be8cfd6c-7401-411e-9efd-7bba38c666b4",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q4. Factors & Cryptography (3.44) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4aa9f589-cfa6-4f31-9f0a-0ce95cd7c9f3",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "#### a."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "195fbaee-1c5d-4832-bbfd-4665315dd135",
+   "metadata": {},
+   "source": [
+    "##### Naive Analysis :\n",
+    "\n",
+    "* Since r is represented with 100 bits, any candidate p that the eavesdropper might use to try to divide r uses also at most 100 bits.\n",
+    "* Thus, this naive algorithm requires $2^{100}$ divisions, which would take about $2^{80}$ seconds, or atleast $2^{55}$ years.\n",
+    "\n",
+    "##### Involved Analysis :\n",
+    "\n",
+    "* We can use the fact that, we do not need to search more than $O(\\sqrt N)$ numbers to check for a single divisor of $N$. \n",
+    "* So, the eavesdropper can use this fact, that a candidate p need not ever be more than 50 bits.\n",
+    "* But, even then, the problem is still difficult. For in this case, $2^{50}$ divisions would take about $2^{30}$ seconds, or about 34 years."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "db384644-bc1a-42d2-9487-e5e5d15b4082",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "#### b."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3e0914c8-9f17-4e8d-a839-41a76991c478",
+   "metadata": {},
+   "source": [
+    "Since each division takes time $O(n)$ and there are $2^{4n}$ total divisions, the asymptotic running time is $O(n*2^{4n})$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "54b4eb91-4499-448e-8186-fc37510debf6",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q5. Missing Element (3.45) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9145e9e8-ac05-4a5a-a8c5-4aff22cb2579",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### Missing number = $Sum(0,1,2,...,n-1) - Sum(S) = n*(n-1)/2 - Sum(S)$\n",
+    "\n",
+    "##### Algorithm  : We can use a single variable to keep track of the sum of S, while iterating over all of S to compute the sum. \n",
+    "\n",
+    "##### Complexity : This algorithm takes $O(N)$ time and $O(1)$ space "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "31d6f231-d1f9-40a3-a3d5-756747c4cfdf",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q6. Count Intersections of N lines (3.47) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f24cf0f1-225a-48ab-9483-4e54ba632fb3",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "\n",
+    "##### Given in the problem statement :\n",
+    "* No three lines intersect concurrently at the same point.\n",
+    "* No two lines are parallel to each other.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d84b0917-6a38-4457-abdc-1fb1990cbd01",
+   "metadata": {},
+   "source": [
+    "##### Core Observation :\n",
+    "* Assume that we already have a set of k lines. Now if we add a new line to this set, then it must intersect all the previous lines, and necessarily at distinct points that weren't already considered.\n",
+    "* Thus at every instant we add a line, the number of intersections increases exactly by the number of lines present currently.\n",
+    "* This is an inductive way of thinking."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "59f68b33-3e65-4f83-8492-d78c48a5e3e6",
+   "metadata": {},
+   "source": [
+    "##### Solution :\n",
+    "Thus irrespective of the order we pick the lines, the following holds :\n",
+    "* Base Case : When we pick 1 line we have 0 intersections.\n",
+    "* At step k : We would have added k-1 new intersections by adding this line-k.\n",
+    "* At step n : We would have added n-1 new intersections.\n",
+    "\n",
+    "Thus the total number of intersection after adding n lines : $0 + 1 + 2 + .... + (n-1) = n*(n-1)/2$ &nbsp; which is &nbsp; $O(N^2)$  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a5767ac8-b6c1-4cc5-acb3-60e6a7d2df0b",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q7. Lowerbound for Fibonacci (3.49) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "225bcaa6-dddf-47d3-9ae7-1343e41b26fe",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### Goal : prove that there exist positive $c,n_0$ such that $c*(3/2)^n <= F(n)$ for all $n>=n_0$\n",
+    "##### Let's consider c=1.\n",
+    "\n",
+    "##### => Our claim becomes : $(3/2)^n <= F(n)$ for all $n >= n_0$ for some $n_0 > 0$\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6d54c0e6-744f-48b5-90a9-ef3ac7ba57bb",
+   "metadata": {},
+   "source": [
+    "##### Try these base Cases : $F(1)=1 , F(2)=2, F(3)=3$ . \n",
+    "* We can see that our claim does not hold for these, so this means we must take a larger $n_0$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3f28587b-8371-45fa-844f-72fa255819db",
+   "metadata": {},
+   "source": [
+    "##### Observation :\n",
+    "* Observe that the claim holds for $F(5)$ and $F(6)$, by manual verification.\n",
+    "* Can we somehow extend this inductively for all $n >= 5$ ?."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d1f1a223-dd59-4547-8ab7-119575daeb74",
+   "metadata": {},
+   "source": [
+    "##### Sketch of the Solution :\n",
+    "* $F(5)$ and $F(6)$ form our base cases.\n",
+    "* Inductive Assumption : Asssume that our claim holds for all $k' < k$ .\n",
+    "* Inductive Proof : We need to prove that, given this, the claim also holds for $k$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2ce313f2-d1ca-4c4b-874a-b42854e8b173",
+   "metadata": {},
+   "source": [
+    "##### The proof :\n",
+    "* F(k) = F(k-1) + F(k-2)\n",
+    "* We know that $ F(k-1) >= (3/2)^{(k-1)} $ and $ F(k-2) >= (3/2)^{(k-2)} $\n",
+    "* Thus $ (3/2)^{(k-2)} * (1+3/2) <= F(k-1) + F(k-2) = F(k) $\n",
+    "* Multiply and divide by $(3/2)^2$ to get $(5/2) * (4/9) * (3/2)^k <= F(k) $\n",
+    "\n",
+    "Thus, $ 10/9 * (3/2)^k <= F(k) $ => $ (3/2)^k <= F(k) $\n",
+    "\n",
+    "With that, we have established the inductive proof completely."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f702bfba-abd4-45e5-a8bd-3a995a1cf704",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q8. Polynomial Evaluation (3.50) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "da79c3ea-7afd-40bf-a39d-e15591215c65",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "#### (a) Bruteforce : $O(N^2)$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4166d4da-8b5c-41b3-9686-9c0927306a7d",
+   "metadata": {},
+   "source": [
+    "* For every $i$ from $0$ to $n$, we can just calculate $x^i$ using a simple loop which multiplies $x$, $i$ times. And then multiply it with $a_i$. Finally, we can just sum up all of these terms.\n",
+    "\n",
+    "* Since, for every $i$ we are running a loop till $i$, it'll take $1+2+...+n = n*(n+1)/2$ time in total, or $O(N^2)$ time."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bbfb6022-3830-4495-9f1a-ddfceccab2c1",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "#### (b) Optimized : $O(NlogN)$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b418016a-a19e-47dc-b9a7-5d048e1e1fc4",
+   "metadata": {},
+   "source": [
+    "* The trivial bottleneck in our bruteforce solution, was the computation of $x^i$. If we can speed this up from $O(N)$ to $O(logN)$, then we can get our solution to work in $O(NlogN)$.\n",
+    "\n",
+    "* We can do this using Divide & Conquer. The problem breaks down recursively into the following :\n",
+    "    * If n is even : $ power(x,n) = power(x,n/2) * power(x,n/2) $  \n",
+    "    * If n is odd : $ power(x,n) = x * power(x,n/2) * power(x,n/2) $ "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c13a7f36-5885-4389-8e91-e10dd558d4e2",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### Food for Thought :\n",
+    "* Can't we just add the contribution of every intermediate $x^i$ to our answer then and there, while we multiply $x$ times to get $x^n$ ?.\n",
+    "\n",
+    "* By this we'll get an $O(N)$ time solution ?. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4f9240b3-ce13-4dca-b80d-9c6530f1d108",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "#### (c) Horner's Method : $O(N)$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "acca4396-ead2-4881-9247-45c2d2c109e9",
+   "metadata": {},
+   "source": [
+    "* If we observe the pattern carefully, we can see that the idea is to initialize result as coefficient of $x_n$ I.e $a_n$ , and repeatedly multiply the result with $x$ and add next coefficient ($a_{n-1}$) to the result.\n",
+    "\n",
+    "* At every step we are performing 2 arithmetic operations ( 1 addition, 1 multiplication ).\n",
+    "\n",
+    "* And, there are n steps in total until we hit $a_0$. Therefore, the algorithm does $O(2n)$ or $O(n)$ arithmetic operations in total."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "76f7db89-5926-4f58-a810-2e083b67d928",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q9. The Poisoned Wine (3.53)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f22321c8-295e-4516-b2b3-f1d1d363c4c0",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### Goal : Exactly 1 among n bottles is poisoned, we need to find that bottle in one go, using $O(logN)$ taste testers"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "392afc8d-a9d9-49f1-9257-2198ae7686ed",
+   "metadata": {},
+   "source": [
+    "##### Solution :\n",
+    "\n",
+    "* Number each bottle from 1 to n. Select $\\lceil logN\\rceil$ testers and map each tester to a bit.\n",
+    "* On the first day of the month, a tester samples a wine if, in the binary representation of the wine's number, his bit is 1.\n",
+    "\n",
+    "For example, if tester A is assigned to the lowest order bit and there are 5 bottle, he will sample bottles 1, 3, and 5. If tester B is assigned to the highest order bit, he will sample bottles 4 and 5.\n",
+    "\n",
+    "After the month is over, the number of the poisoned bottle can be determined. If a taster dies, then the bit they were mapped to, is a set bit (1) in the poisoned bottle's number. Otherwise, the bit is 0.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7a5a84cf-b4e6-4781-8875-6ee0bd028b8d",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "## Q10-Q15 (Allen Weiss)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd49f97-54a1-4948-be45-9a115f03e58f",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q10. Run Time Analysis (2.7) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b1aa528b-52e5-4887-9b9d-c5db06fcc4e1",
+   "metadata": {},
+   "source": [
+    "#### Sub-section a"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2ab33f72-3e11-4d83-a130-4fddd7d2dcc3",
+   "metadata": {},
+   "source": [
+    "Big-O complexity of the algorithms :\n",
+    "\n",
+    "$1)$ As we are just iterating over all of $n$, it is easy to see that the first algorithm has a complexity of $O(n)$.\n",
+    "\n",
+    "$2)$ We have two nested for loops going over all of $n$, thus leading to a complexity of $O(n^2)$.\n",
+    "\n",
+    "$3)$ We again have two nested for loops, but this time the inner loop goes till $n^2$. Thus leading to a total complexity of $O(n*n^2) = O(n^3)$.\n",
+    "\n",
+    "$4)$ The inner loop runs for $0 + 1 + 2 + .. + (n-1) = n*(n-1)/2$ times in total, thus leading to a complexity of $O(n^2)$.\n",
+    "\n",
+    "$5)$ First, let's analyze for a fixed $i$. The $j$ and $k$ loops behave similar to algorithm 4, you can imagine some $m=i*i$. So, the inner loops take $O(i^2*i^2) = O(i^4)$ time for a fixed $i$. Thus, we have $\\sum_{i=1}^{n} i^{4}$ which is $O(n^5)$ . \n",
+    "\n",
+    "$\\textbf{Side Note}$ : There are also an exact formula for the sum of powers of 4 till $n$.\n",
+    "\n",
+    "$6)$ For a fixed $i$, the $j$ and $k$ loops combinedly run for \" sum of multiples of $i$ less than $i^2$ \" times. That is, $ i + 2i + 3i + .... + (i-1)i $ = $ i*i*(i-1)/2 $ times, which is of the order of $n^3$. Thus, including the for loop for $i$, we have a complexity of $O(n^4)$\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "91a42c91-f052-402d-915d-daa855fd5fe6",
+   "metadata": {},
+   "source": [
+    "#### Sub-sections b & c"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 272,
+   "id": "cef5a4d4-8c15-4dc0-b75d-e0af9d5ad7fc",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# For sub-section c, try using different values. n beyond 80-90 will explode for some algorithms. \n",
+    "import time\n",
+    "n = 70 "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1ce0230d-0433-402d-8161-23f6bdfb48ad",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### (1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 273,
+   "id": "ff4489e2-8b50-41a0-8bc5-dece93efd9e2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "70\n",
+      "0.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "start = time.time()\n",
+    "\n",
+    "sum = 0\n",
+    "for i in range(n):\n",
+    "    sum += 1\n",
+    "print(sum)\n",
+    "\n",
+    "end = time.time()\n",
+    "print(end-start)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "94d9699a-6fa8-4e48-a6db-652f89e2f606",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### (2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 274,
+   "id": "375965c3-d179-4d6e-bc8a-0fe80b46b33d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "4900\n",
+      "0.0010094642639160156\n"
+     ]
+    }
+   ],
+   "source": [
+    "start = time.time()\n",
+    "\n",
+    "sum = 0\n",
+    "for i in range(n):\n",
+    "    for j in range(n):\n",
+    "        sum += 1\n",
+    "print(sum)\n",
+    "\n",
+    "end = time.time()\n",
+    "print(end-start)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ba785682-8d97-435d-8dae-4487d33d06cf",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### (3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 275,
+   "id": "138f4a57-7ad6-4da7-a645-e699538f84c4",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "343000\n",
+      "0.01799798011779785\n"
+     ]
+    }
+   ],
+   "source": [
+    "start = time.time()\n",
+    "\n",
+    "sum=0\n",
+    "for i in range(n):\n",
+    "    for j in range(n*n):\n",
+    "        sum += 1\n",
+    "print(sum)\n",
+    "\n",
+    "end = time.time()\n",
+    "print(end-start)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a4b50943-7036-4ba1-8baf-2f759c12f1c5",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### (4)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 280,
+   "id": "7af45415-1a61-4a6e-94a0-6d1ddaaa3aac",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2415\n",
+      "0.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "start = time.time()\n",
+    "\n",
+    "sum = 0\n",
+    "for i in range(n):\n",
+    "    for j in range(i):\n",
+    "        sum += 1\n",
+    "print(sum)\n",
+    "\n",
+    "end = time.time()\n",
+    "print(end-start)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1379e0cc-6e6e-4398-9337-343a29f650ad",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### (5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 281,
+   "id": "ca3b46dc-3444-45be-b8aa-a3409687a087",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "162068718\n",
+      "8.840025901794434\n"
+     ]
+    }
+   ],
+   "source": [
+    "start = time.time()\n",
+    "\n",
+    "sum = 0\n",
+    "for i in range(n):\n",
+    "    for j in range(i*i):\n",
+    "        for k in range(j):\n",
+    "            sum += 1\n",
+    "print(sum)\n",
+    "\n",
+    "end = time.time()\n",
+    "print(end-start)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bbcce3a7-92c4-40f5-89b1-da1789292e02",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### (6)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 282,
+   "id": "8783a9d3-fc48-42eb-836d-eaa796a38b65",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2860165\n",
+      "0.16250205039978027\n"
+     ]
+    }
+   ],
+   "source": [
+    "start = time.time()\n",
+    "\n",
+    "sum = 0\n",
+    "for i in range(1,n):\n",
+    "    for j in range(1,i*i):\n",
+    "        if(j%i == 0):\n",
+    "            for k in range(j):\n",
+    "                sum += 1\n",
+    "print(sum)\n",
+    "\n",
+    "end = time.time()\n",
+    "print(end-start)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f0e67a70-f33b-4ec7-82a0-8064beb16939",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q11. Idempotent Integer (2.15)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d44b88e3-dab8-4a62-8647-e3889e5cb6a1",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### Observations\n",
+    "\n",
+    "* Let's try to see how $A_i - i$ would look like for all $i=1$ to $N$. Since $A_1 < A_2 < A_3 < ... < A_N$ .\n",
+    "\n",
+    "* We'll have $ A_1 - 1 <= A_2 - 2 <= A_3 - 3 <= .... <= A_N - N $ , because for integers $ (x < y) => (x + 1 <= y) $ .\n",
+    "\n",
+    "* Now, finding $A_i = i$ is same as finding $A_i-i=0$ . Thus, we have transformed the problem into finding if there exists atleast one $0$ element in a non-decreasing array $B$, where $B_i = A_i - i $ , for all $i = 1$ to $N$.\n",
+    "\n",
+    "* Let's go ahead and solve this using binary search in $O(logN)$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5b6e6e82-bbbf-44b6-b130-2e4afbe4fda6",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### An Implementation of the Algorithm :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 63,
+   "id": "ffa63d37-0b7f-4261-9bf7-abfc9420c5c8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "We have found such an integer : i=7, A[7] = 7\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "A = [ -7, -4, -2, 0, 3, 5, 7, 8, 11, 14, 16, 17 ] \n",
+    "\n",
+    "# Try to actually calculate B, just for understanding.\n",
+    "# B = [ x-i-1 for i,x in enumerate(A) ]\n",
+    "# print(B)\n",
+    "\n",
+    "# Binary Search : Initially the answer can lie anywhere in the entire array.\n",
+    "n = len(A)\n",
+    "left = 0\n",
+    "right = n-1 \n",
+    "\n",
+    "found = False\n",
+    "\n",
+    "while(left<=right):\n",
+    "\n",
+    "    mid = int((left+right)/2)\n",
+    "\n",
+    "    # (mid+1) cuz we need to convert to 1-based indexing/\n",
+    "    val = A[mid] - (mid+1)              \n",
+    "    if(val==0) :      \n",
+    "        found = True \n",
+    "        break\n",
+    "    \n",
+    "    if(val<0): # Try searching to the right\n",
+    "        left = mid+1 \n",
+    "    else:      # Try searching to the left   \n",
+    "        right = mid-1\n",
+    "\n",
+    "# While printing the results we stick to 1-based indexing although we've used 0-based.\n",
+    "if(found):\n",
+    "    print(f\"We have found such an integer : i={mid+1}, A[{mid+1}] = {mid+1}\") \n",
+    "else:\n",
+    "    print(\"There does not exist any such integer i in array A\")\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b4cb20ec-1a05-4349-b89e-5dda9b777fd0",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "##### What is the running time of your algorithm ?."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c2460390-d63b-47c1-a7ba-8366a462de2a",
+   "metadata": {},
+   "source": [
+    "##### $O(logN)$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "63100619-815c-4e85-8d16-f4a5f88d2016",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q12. Find the Root (2.18)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ae867670-5b2a-4152-bf72-c064cc51becd",
+   "metadata": {},
+   "source": [
+    "##### Core Logic : \n",
+    "\n",
+    "* Since $f(low)$ and $f(high)$ have different signs, we must cross the $x-axis$ atleast once when moving from low to high. Thus there must be atleast one root in between.\n",
+    "\n",
+    "* We can try to evaluate the root quickly, using binary search. The idea is that, any point in between will have it's sign different from either of low or high, since the signs of low and high are opposite to each other.\n",
+    "\n",
+    "* We can keep selecting such ranges to reduce the range of our interval by half everytime, as we'll have a sub-problem exactly similar to what we started out with, everytime.\n",
+    "\n",
+    "* When the interval gets small enough, we'll have our answer. And, since we are reducing by half everytime, we'll reach our root very soon.\n",
+    "\n",
+    "##### What must we do to ensure termination :\n",
+    "\n",
+    "* Since, we are dealing with real numbers, we must set a threshold for $high-low$ as a termination condition, else we might keep going indefinitly in a bid to get infinitely closer to the actual root."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "16f8c416-0511-43f5-ae98-d2ac5a3656d2",
+   "metadata": {},
+   "source": [
+    "##### An Implementation of the Algorithm :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "b06590f6-33ea-4c91-b9fb-b7c7746e5599",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "root :  -0.707109069824219\n",
+      "f(root) :  8.369213122971786e-06\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "# An example function, we'll take this as parameter.\n",
+    "f = lambda x : 2*(x**3) + 4*(x**2) - (x) - 2 \n",
+    "\n",
+    "# Example initial interval limits and threshold :\n",
+    "low = -1.6\n",
+    "high = 0.5\n",
+    "threshold = 0.0001\n",
+    "\n",
+    "sign = lambda x : (x>0)                        # A helper function to get sign of a number.\n",
+    "\n",
+    "# Keep going, until your interval gets small enough\n",
+    "while( (high-low) > threshold ):\n",
+    "\n",
+    "    valAtLow = f(low)\n",
+    "    valAtHigh = f(high)\n",
+    "    \n",
+    "    mid = (low+high)/2\n",
+    "    valAtMid = f(mid) ;    \n",
+    "    \n",
+    "    if( sign(valAtLow) ^ sign(valAtMid) ) :    # Using xor as opposites detector.\n",
+    "        high = mid\n",
+    "    else :\n",
+    "        low = mid\n",
+    "\n",
+    "root = (low+high)/2\n",
+    "print('root : ',root)\n",
+    "\n",
+    "# Voila! We indeed have a root at -1 / sqrt(2) !.\n",
+    "print('f(root) : ',f(root))                    \n",
+    "# f(root) must be as close as possible to 0.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "58ebe347-cc1c-480d-b47a-a3c547291488",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q13. Sieve of Eratosthenes (2.21)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bd02c546-9fe4-4efd-88e6-f2137e5cb254",
+   "metadata": {},
+   "source": [
+    "##### An Implementation of the Algorithm :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "9feb1aa9-33aa-40c8-8d02-178835c09592",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]\n"
+     ]
+    }
+   ],
+   "source": [
+    "import math\n",
+    "N = 100\n",
+    "\n",
+    "prime = [ True for i in range(N+1) ]\n",
+    "prime[0] = False\n",
+    "prime[1] = False\n",
+    "\n",
+    "for i in range(2,int(math.sqrt(N))+1):    # The outer loop runs for O(sqrt(N)) times.\n",
+    "    if(not prime[i]) : continue           # But this if condn ensures that we run the alg only for prime i\n",
+    "    for j in range(2*i,N+1,i):            # The inner loop runs for O(N/i) time.  \n",
+    "        prime[j] = False\n",
+    "        \n",
+    "primes = [ i for i,x in enumerate(prime) if x ]\n",
+    "\n",
+    "print(primes)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "28d748c8-8f14-4f08-aa98-ada627ce96df",
+   "metadata": {},
+   "source": [
+    "##### Time Complexity :\n",
+    "\n",
+    "* Although the outer loop seems to run for $O(\\sqrt N)$ times, the $'if'$ condition ensures that the algorithm in actually run only for prime $i$'s less than $sqrt(N)$.\n",
+    "\n",
+    "* And, for each prime $i$, the inner loop runs for $O(N/i)$ times.\n",
+    "\n",
+    "* Therefore, the overall complexity is the harmonic sum of primes, $n * ( 1/2 + 1/3 + ... 1/p )$ . It can be proven that, the harmonic sum $ ( 1/2 + 1/3 + ... 1/p ) $ converges to $log(logN)$\n",
+    "\n",
+    "* This makes the overall time complexity $O(N*log(logN))$ .\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0da165d6-f063-495d-ade1-8b1aecd3226e",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q14. Majority Element (2.26)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "01aa4ba9-fdf5-4cb8-ad4c-8e75f91551fc",
+   "metadata": {},
+   "source": [
+    "First, let's try to understand why such an algorithm would work. \n",
+    "\n",
+    "##### Set-up\n",
+    "\n",
+    "* For now, let's consider only $\\textbf{even length}$ arrays. We have described the fix for odd length arrays, below in subsection c.\n",
+    "\n",
+    "* Let's divide our even length array into non-overlapping pairs of adjacent elements.\n",
+    "\n",
+    "* We do not need to worry much about the case where the majority element doesn't exist, as in that case too our algorithm will produce something, and we'll catch it in the final check that if this candidate is actually the majority.\n",
+    "\n",
+    "* So, for the upcoming sections, we'll assume a majority element exists.\n",
+    "\n",
+    "##### Pegion-hole Principle\n",
+    "\n",
+    "* The claim is that, if there exists a majority element, then there must exist atleast one pair of elements with both elements equal to the majority element. This can be proven/understood by thinking in terms of pegion-hole principle.\n",
+    " \n",
+    "* I.e. there are N/2 boxes (pairs) and atleast N/2 + 1 elements (majority element), and thus there will be atleast one box/pair with more than one majority element.\n",
+    "\n",
+    "##### Why our Algorithm works\n",
+    "\n",
+    "* It's clear that our algorithm will produce a list of candidate elements of atmost half the size, and our majority element will also be a part of it. (If at all it exists)\n",
+    "\n",
+    "* But, for us to apply the algorithm recursively, we still have to prove that the majority element in our inital array will still remain a majority element in the candidate array.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8fd6c50a-2d8e-4531-a66f-2c74936fbff9",
+   "metadata": {},
+   "source": [
+    "#### a. How does the recursion terminate ?."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "786cd42d-d80c-4221-bff1-03818198403b",
+   "metadata": {},
+   "source": [
+    "* We can terminate the recursion at base cases like n=4 for which the computation to check is not much expensive."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "401a266d-3aff-4a5e-a623-cd06265f9108",
+   "metadata": {},
+   "source": [
+    "#### b. How is the case where N is odd handled ?."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3964589c-c27d-4016-82f6-b4020dbb7a75",
+   "metadata": {},
+   "source": [
+    "* Any proof you had provided for the even case, must also be extended to the odd case.\n",
+    "\n",
+    "* One fix can be, adding the last element also to our list of candidates manually. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "855d43c1-8937-46e8-8d9b-8266f0652fbd",
+   "metadata": {},
+   "source": [
+    "#### c. What is the running time of the algorithm ?."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f5258861-7c55-4c6c-b90e-40a282b66e82",
+   "metadata": {},
+   "source": [
+    "* It takes $N + N/2 + N/4 + ... + 1 = 2N$ time in total, and $O(N)$ time for checking if a particular candidate is actually the majority element. Therefore it's an $O(N)$ algorithm."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b2c7311d-5714-43ab-806b-94d9bfd4db6c",
+   "metadata": {},
+   "source": [
+    "#### d. How can we avoid using an extra array, B ?."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "91e75286-74e5-4d31-8938-84ab90ecace5",
+   "metadata": {},
+   "source": [
+    "-"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cf1ae931-bb2a-42ab-9629-dfe9183ff476",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "#### e. Write a program to compute the majority element."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 114,
+   "id": "de045153-7b36-48b0-a2c6-bae35fbda6aa",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The Majority element is 3\n"
+     ]
+    }
+   ],
+   "source": [
+    "def majorityElement(A):\n",
+    "    #Your code here\n",
+    "\n",
+    "    N = len(A)\n",
+    "    \n",
+    "    def recur(a):\n",
+    "        \n",
+    "        n = len(a)\n",
+    "        \n",
+    "        # Base Cases\n",
+    "        if(n<=4): return a    \n",
+    "            \n",
+    "        b = []  \n",
+    "            \n",
+    "        for i in range(1,n,2):   \n",
+    "            if(a[i]==a[i-1]): b.append(a[i])\n",
+    "        \n",
+    "        if(n%2): b.append(a[n-1])\n",
+    "        \n",
+    "        return recur(b)\n",
+    "        \n",
+    "        \n",
+    "    candidates = recur(A)    \n",
+    "    \n",
+    "    for cand in candidates :\n",
+    "        \n",
+    "        cnt=0    \n",
+    "        for i in range(len(A)):   \n",
+    "            cnt += (A[i]==cand)\n",
+    "\n",
+    "        if(cnt > N/2) : return cand\n",
+    "\n",
+    "    return -1\n",
+    "\n",
+    "\n",
+    "A = [1,3,2,3,3,4,3,5,6,3,3]\n",
+    "ans = majorityElement(A)\n",
+    "print(f\"The Majority element is {ans}\" if ans!=-1 else \"The Majority element doesn't exist\")\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9ca6d22c-d42a-411e-9450-b0c50a45462e",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Q15. Search in Sorted Matrix (2.27)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dd63716c-9ea6-487b-81c4-52c27079694a",
+   "metadata": {},
+   "source": [
+    "\n",
+    "##### Initialization :\n",
+    "\n",
+    "* Start from the top-right corner of the matrix. Let your current row and col be $r$ and $c$ respectively, and also the current element $mat[r][c]$ be $y$.\n",
+    "\n",
+    "##### Make a decision to discard current row or col :\n",
+    "\n",
+    "* $Row :$ Observe that, all elements to the left of the current element $y$, in row $r$ are smaller than $y$.\n",
+    "\n",
+    "* $Col :$ Similarly, all elements that are down of the current element $y$, in col $c$ are larger than $y$.\n",
+    "\n",
+    "* It is not hard to see that at any point $(r,c)$, we can discard atleast one of row $r$ or col $c$ when searching for $x$. This is because, $x$ has to be either smaller than $y$ or larger than $y$. It cannot be both.\n",
+    "\n",
+    "##### Transition :\n",
+    "\n",
+    "* So, if we discard the row $r$, we transition to $(r+1,c)$. Similarly, if had discarded col $c$, we would have transitioned to $(r,c-1)$.\n",
+    "\n",
+    "* Observe that, these are sub-problems which are exactly similar to the original problem. So, we can continue to consider the new sub-matrix with the top-right corner as the current cell, as the new subproblem.\n",
+    "\n",
+    "* We can keep doing this, until we either find our element (or) run out of rows or cols.\n",
+    "\n",
+    "Time Complexity :\n",
+    "\n",
+    "* We cannot discard more than n+m rows and cols. And, at each step we just do an O(1) operation to update our pointers, as we don't need to actually discard the rows/cols. We just simulate the process by updating the pointers accordingly.\n",
+    "\n",
+    "* Thus, we have a overal time complexity of $O(N+M)$.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8cc84906-6900-4d55-b314-be73622f7cd4",
+   "metadata": {},
+   "source": [
+    "##### Implementation of the $O(N)$ algorithm described above :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 72,
+   "id": "3d4f5df2-75db-4077-b9cd-d5070258d902",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Yes the element with value 2 does exist\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Input matrix and intended number :\n",
+    "mat = [ [1,3,5] , [2,6,7] , [5,7,10] ] \n",
+    "x = 2\n",
+    "\n",
+    "n = len(mat)\n",
+    "m = len(mat[0])\n",
+    "\n",
+    "# Solver function\n",
+    "def search_matrix(mat,x,n,m) :\n",
+    "\n",
+    "    # Start at the top-right corner.\n",
+    "    r, c = 0, m-1\n",
+    "        \n",
+    "    # As long as there's a valid submatrix to search.\n",
+    "    while(r<n and c>=0):\n",
+    "        \n",
+    "        if(x<mat[r][c]): # Discard the column\n",
+    "            c -= 1\n",
+    "        elif(x>mat[r][c]): # Discard the row\n",
+    "            r += 1 \n",
+    "        else: # o.w you've found the element\n",
+    "            return True\n",
+    "\n",
+    "found = search_matrix(mat,x,n,m)\n",
+    "\n",
+    "print( f\"Yes the element with value {x} does exist\" if found else f\"No element with value {x} exists\" ) \n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
